@@ -26,12 +26,13 @@ class ResultsViewController: UIViewController {
         } else{
             explainationText.text = "Split between \(Int(split!)) people, with \(Int(tipPercentage! * 100))% tip"
         }
-        
-
-        // Do any additional setup after loading the view.
     }
+    // when the results view loads, it will display the result with an explaination label containing information on how the result was obtained
+    
     @IBAction func recalculateButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    // activates when the recalculate button is pressed
+    // returns to the calculator screen and the user may choose to perform another calculation
         
 }

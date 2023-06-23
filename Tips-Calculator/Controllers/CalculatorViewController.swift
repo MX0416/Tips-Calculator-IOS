@@ -20,6 +20,7 @@ class CalculatorViewController: UIViewController {
     @IBAction func tipChanged(_ sender: UIButton) {
         
         billAmountText.endEditing(true)
+        // remove the numbers keypad from the screen automatically when one of the tips options is chosen
         
         if sender == zeroPercentTip{
             sender.isSelected = true
@@ -49,24 +50,27 @@ class CalculatorViewController: UIViewController {
         }
         // Twenty percent button is selected
     }
+    // function that activats when the user has selected or changed a tip percentage amount
+    // returns the percentage the user has chosen to the calculatorBrain created above, and keeps the value in the percentageChosen variable inside calculatorBrain
     
     @IBAction func splitStepperChanged(_ sender: UIStepper) {
         
         splitNumberText.text = String(Int(sender.value))
         
     }
+    // function that activates when the user has interacted with the stepper
+    // changes the text number next to the stepper to match user input
     
     
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
         
-//        print(calculatorBrain.percentageChosen!)
-//        print(splitNumberText.text!)
-//        print(billAmountText.text ?? 0)
-
         calculatorBrain.calculateBill(billTotal: Float(billAmountText.text!)!, tipPercentage: calculatorBrain.percentageChosen!, split: Float(splitNumberText.text!)!)
         
         self.performSegue(withIdentifier: "goToResult", sender: self)
     }
+    // function is activated when the calculate button is pressed
+    // calls the calculateBill method from the calculatorBrain created at the top, giving three values
+    // performs segueway to the results view
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToResult" {
@@ -76,6 +80,8 @@ class CalculatorViewController: UIViewController {
             destinationVC.tipPercentage = calculatorBrain.percentageChosen
         }
     }
+    // double check the identifier is correct for the segueway to perform
+    // passes three values to the results view controller (final result after calculations. split number and tip percentage for one line description below the final result value)
     
     
     

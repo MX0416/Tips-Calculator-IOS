@@ -19,5 +19,6 @@ struct CalculatorBrain {
         finalResult = (billTotal * (tipPercentage + 1.0)) / split
         
     }
+    //function to calculate the final result, taking in three parameters: total bill amount, tip percentage, and split from user input
     
 }
